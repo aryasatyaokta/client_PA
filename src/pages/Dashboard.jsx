@@ -1,17 +1,93 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Welcome from '../images/melek.png'
 import Sidebar from '../auth/Sidebar'
 import { useNavigate } from 'react-router-dom'
+import audioDashboard from '../audio/audio_dashboard.mp3'
 
 export default function Dashboard() {
-  const navigate = useNavigate()
+    const navigate = useNavigate();
+  const [pretestTaken, setPretestTaken] = useState(false);
+  const [audioMuted, setAudioMuted] = useState(false);
+  const textInterval = useRef(null);
+  const audioElement = useRef(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('TOKEN')
-    if(!token){
-        navigate('/login')
+    const token = localStorage.getItem('TOKEN');
+    if (!token) {
+      navigate('/login');
     }
-  })
+
+    // Simulate checking if pretest has been taken
+    const pretestTakenStatus = localStorage.getItem('PRETEST_TAKEN');
+    if (pretestTakenStatus === 'true') {
+      setPretestTaken(true);
+    }
+
+    // Play the audio with a 5-second delay if pretest has not been taken
+    if (!pretestTaken) {
+      audioElement.current = new Audio(audioDashboard);
+      audioElement.current.volume = 0.8;
+
+      const playAudio = () => {
+        if (!audioMuted && audioElement.current) {
+          audioElement.current.play();
+          displayText();
+        }
+      };
+
+      const clearText = () => {
+        clearInterval(textInterval.current);
+        const textElement = document.getElementById('introText');
+        textElement.innerHTML = '';
+      };
+
+      audioElement.current.addEventListener('canplaythrough', playAudio);
+      audioElement.current.addEventListener('pause', clearText);
+      audioElement.current.addEventListener('error', clearText);
+
+      // Mark pretest as taken after playing the audio
+      localStorage.setItem('PRETEST_TAKEN', 'true');
+
+      // Optionally, you might want to stop the audio when the component unmounts
+      return () => {
+        if (audioElement.current) {
+          audioElement.current.pause();
+          audioElement.current.currentTime = 0;
+          audioElement.current.removeEventListener('canplaythrough', playAudio);
+          audioElement.current.removeEventListener('pause', clearText);
+          audioElement.current.removeEventListener('error', clearText);
+        }
+      };
+    }
+  }, [navigate, pretestTaken, audioMuted]);
+
+  const displayText = () => {
+    const textElement = document.getElementById('introText');
+    const text =
+      "Halooo, kenalin aku Joko, disini aku akan menemani kamu dalam belajar aksara Jawa, yuk belajar sama aku Oke, pertama ada pretest yang harus kamu kerjakan lhoo, klik pada menu pretest yaaa";
+    const words = text.split(' ');
+
+    let index = 0;
+    textInterval.current = setInterval(() => {
+      if (index < words.length) {
+        const chunk = words.slice(index, index + 3).join(' ');
+        textElement.innerHTML = chunk;
+        index += 3;
+      } else {
+        clearInterval(textInterval.current);
+      }
+    }, 2000); // Adjust the interval as needed
+  };
+
+  const toggleAudio = () => {
+    setAudioMuted((prevMuted) => {
+      const newMuted = !prevMuted;
+      if (audioElement.current) {
+        audioElement.current.muted = newMuted;
+      }
+      return newMuted;
+    });
+  };
   return (
     <div>
         <Sidebar/>
@@ -51,11 +127,14 @@ export default function Dashboard() {
                 <div className="col-span-2 flex items-center">
                     <p className="text-5xl font-bold text-[#9A3B3B]">Selamat Datang di Pembelajaran Aksara Mari Kita Belajar Aksara Jawa</p>
                 </div>
-                <div className="
-                flex items-center justify-center border-yellow-700 border-2 rounded-xl drop-shadow-xl">
+                <div className="flex flex-col items-center justify-center border-yellow-700 border-2 rounded-xl drop-shadow-xl">
                     <img className='w-52' src={Welcome} alt=''/>
+                    <button onClick={toggleAudio}>
+                        {audioMuted ? 'Unmute Audio' : 'Mute Audio'}
+                    </button>
                 </div>
             </div>
+            <p className='text-center w-60 ml-auto mr-12' id="introText"></p>
             <div className="grid grid-cols-2 my-20">
                 <div className='bg-[#9A3B3B] w-96 h-60 mx-auto rounded-lg flex flex-col justify-center items-center gap-10'>
                     <svg className="w-16 h-16 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">

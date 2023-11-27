@@ -1,22 +1,20 @@
 import Sidebar from '../../auth/Sidebar'
-import Welcome from '../../images/melek.png'
-import React, { useEffect } from 'react'
+import Nangis from '../../images/nangis.png'
+import Kagum from '../../images/kagum.png'
+import React, {useEffect} from 'react'
 // import '../styles/Result.css';
 import { Link } from 'react-router-dom';
 
-import ResultTable from './ResultTable';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { attempts_Number, earnPoints_Number, flagResult } from '../../helper/helper';
 
 /** import actions  */
-import { resetAllAction } from '../../redux/question_reducer';
-import { resetResultAction } from '../../redux/result_reducer';
 import { usePublishResult } from '../../hooks/setResult';
 
+import audioNilaiKurang from '../../audio/audio_nilai_kurang.mp3'
+import audioNilaiCukup from '../../audio/audio_nilai_cukup.mp3'
 
 export default function Result() {
-
-    const dispatch = useDispatch()
     // const { questions : { queue ,answers}, result : { result, userId}}  = useSelector(state => state)
     const { questions : { queue ,answers}, result : { result, userId}}  = useSelector(state => state)
 
@@ -35,10 +33,15 @@ export default function Result() {
         points: earnPoints,
         achived : flag ? "Passed" : "Failed" });
 
-    function onRestart(){
-        dispatch(resetAllAction())
-        dispatch(resetResultAction())
-    }
+    useEffect(() => {
+      if (earnPoints < 80) {
+        const audioElement = new Audio(audioNilaiKurang);
+        audioElement.play();
+      } else if (earnPoints >= 80) {
+        const audioElement = new Audio(audioNilaiCukup);
+        audioElement.play();
+      }
+    }, [earnPoints]);
 
   return (
     <div>
@@ -81,18 +84,18 @@ export default function Result() {
               </div>
 
               <div className='flex flex-col items-center justify-center'>
-                {earnPoints < 80 ? (
-                    <Link to='/materi' className='bg-[#9A3B3B] px-16 py-2 text-white rounded-lg'>Next</Link>
-                        ) : earnPoints >= 80 ? (
-                    <Link to='/materi3' className='bg-[#9A3B3B] px-16 py-2 text-white rounded-lg'>Next</Link>
-                ) : null}
+                <Link to='/materii' className='bg-[#9A3B3B] px-16 py-2 text-white rounded-lg'>Selanjutnya</Link>
               </div>
               {/* <div className='my-10'>
                 <ResultTable nama={userId}/>
               </div> */}
             </div>
             <div className="flex items-center justify-center border-yellow-700 border-2 rounded-xl drop-shadow-xl self-start">
-              <img className='w-52 self-start' alt='' src={Welcome}/>
+            {earnPoints >= 80 ? (
+              <img className='w-52 self-start' alt='' src={Kagum} />
+              ) : (
+              <img className='w-52 self-start' alt='' src={Nangis} />
+            )}
             </div>
           </div>
         </div>

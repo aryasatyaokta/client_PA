@@ -11,12 +11,12 @@ export default [
     },
     {
         id: 2,
-        question: "ꦝ aksara ing samping iki unine ___",
+        question: " 'ana cara' yen ditulis aksara jawa yaiku ___",
         options: [
-            'ba',
-            'da',
-            'dha',
-            'na'
+            'ꦥꦤꦕꦫ',
+            'ꦲꦕꦫ',
+            'ꦲꦤꦕꦫ',
+            'ꦪꦤꦕꦫ'
         ]
     },
     {
@@ -41,14 +41,16 @@ export default [
     },
     {
         id: 5,
-        question: "`bapak mangan` yen ditulis aksara jawa yaiku ___",
+        question: "`ꦝ` aksara jawa ing samping iki unine ___",
         options: [
-            'ꦧꦥꦏ꧀ꦩꦔꦺꦴꦤ꧀',
-            'ꦧꦥꦏ꧀ꦩꦺꦴꦔꦺꦴꦤ꧀',
-            'ꦧꦥꦏ꧀ꦩꦕ',
-            'ꦧꦥꦏ꧀ꦩꦔꦤ꧀'
+            'da',
+            'pa',
+            'nya',
+            'dha'
         ]
     }
 ];
 
 export const answers = [0, 2, 3, 1, 3];
+
+// export const answerss = [2, 0, 0, 3, 1];

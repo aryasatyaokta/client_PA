@@ -1,19 +1,45 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect} from 'react'
 import Sidebar from '../../auth/Sidebar'
 import Welcome from '../../images/melek.png'
 import {Link} from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { setUserId } from '../../redux/result_reducer';
+import audioMulaiPretest from '../../audio/audio_mulai_pretest.mp3';
+import { useNavigate } from 'react-router-dom'
 
 export default function Pretest() {
   const inputRef = useRef(null);
   const dispatch = useDispatch()
+  const audioRef = useRef(new Audio(audioMulaiPretest));
+  const navigate = useNavigate();
 
   function startQuiz(){
     if(inputRef.current?.value){
       dispatch(setUserId(inputRef.current?.value))
     }
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem('TOKEN');
+    if (!token) {
+      navigate('/login');
+    } else {
+      // Play audio only if it hasn't been played before
+      const audioPlayed = localStorage.getItem('AUDIO_PLAYED');
+      if (!audioPlayed) {
+        setTimeout(() => {
+          audioRef.current.play();
+          localStorage.setItem('AUDIO_PLAYED', 'true');
+        }, 1000);
+      }
+    }
+
+    // Stop audio when component is unmounted or navigated away
+    return () => {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    };
+  }, [navigate]);
 
   return (
     <div>

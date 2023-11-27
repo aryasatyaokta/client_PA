@@ -3,7 +3,7 @@ import Sidebar from '../../auth/Sidebar'
 import Welcome from '../../images/melek.png'
 import {Link} from 'react-router-dom'
 import { useDispatch } from 'react-redux';
-import { setUserId } from '../../redux/result_reducer';
+import { setUserIdStruk } from '../../redux/resultstruk_reducer';
 
 export default function Struktur() {
   const inputRef = useRef(null);
@@ -11,7 +11,7 @@ export default function Struktur() {
 
   function startQuiz(){
     if(inputRef.current?.value){
-      dispatch(setUserId(inputRef.current?.value))
+      dispatch(setUserIdStruk(inputRef.current?.value))
     }
   }
 
@@ -22,7 +22,7 @@ export default function Struktur() {
         <div className="p-4  mt-14">
           <div className="grid grid-cols-3 gap-4 mb-4">
             <div className="col-span-2 justify-center items-center rounded-lg bg-gray-50 h-fulll dark:bg-gray-800">
-              <p className='text-xl font-bold text-[#9A3B3B] text-center my-5'>Postest 1 Aksara Jawa</p>
+              <p className='text-xl font-bold text-[#9A3B3B] text-center my-5'>Latihan Terstruktur Aksara Jawa</p>
               <div className='mx-2'>
                 <p className="text-lg font-semibold text-[#6E6E6E] text-center">Soal Kelas 5 SD</p>
               </div>
@@ -31,7 +31,7 @@ export default function Struktur() {
                   <input className='text-center h-8 focus:outline-none border-2 border-[#9A3B3B] rounded-md' ref={inputRef} type='text' placeholder='Username'/>
                 </form>
                 <div className='start my-6'>
-                  <Link className='btn bg-[#9A3B3B] py-2 px-4 text-white rounded-md' to={'/quiz-posttest1'} onClick={startQuiz}>Start Latihan</Link>
+                  <Link className='btn bg-[#9A3B3B] py-2 px-4 text-white rounded-md' to={'/quiz-lat-terstruktur'} onClick={startQuiz}>Start Latihan</Link>
                 </div>
               </div>
             </div>

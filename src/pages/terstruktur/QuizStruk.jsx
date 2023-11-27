@@ -1,10 +1,10 @@
-import { PushAnswer } from '../../hooks/setResult';
+import { PushAnswerStruk } from '../../hooks/setResult';
 import { useState } from 'react';
 /** redux store import */
 import Sidebar from '../../auth/Sidebar';
 import { useSelector, useDispatch } from 'react-redux'
 import { Navigate } from 'react-router-dom'
-import { MoveNextQuestion, MovePrevQuestion } from '../../hooks/FetchQuestion';
+import { MoveNextQuestionStruk, MovePrevQuestionStruk } from '../../hooks/FetchQuestion';
 import Welcome from '../../images/melek.png'
 import QuestionStruk from './QuestionStruk';
 
@@ -12,16 +12,16 @@ export default function QuizStruk() {
 
     const [check, setChecked] = useState(undefined)
 
-    const result = useSelector(state => state.result.result);
-    const { queue, trace } = useSelector(state => state.questions);
+    const resultStruk = useSelector(state => state.resultStruk.resultsStruk);
+    const { queueStruk, trace } = useSelector(state => state.questionStruk);
     const dispatch = useDispatch()
 
     function onNext(){
-        if(trace < queue.length){
-            dispatch(MoveNextQuestion());
+        if(trace < queueStruk.length){
+            dispatch(MoveNextQuestionStruk());
 
-            if(result.length <= trace){
-                dispatch(PushAnswer(check))
+            if(resultStruk.length <= trace){
+                dispatch(PushAnswerStruk(check))
             }
         }
         setChecked(undefined)
@@ -29,7 +29,7 @@ export default function QuizStruk() {
 
     function onPrev(){
         if(trace > 0){
-            dispatch(MovePrevQuestion());
+            dispatch(MovePrevQuestionStruk());
         }
     }
 
@@ -37,8 +37,8 @@ export default function QuizStruk() {
         setChecked(check)
     }
 
-    if(result.length && result.length >= queue.length){
-        return <Navigate to={'/hasil-posttest1'} replace={true}></Navigate>
+    if(resultStruk.length && resultStruk.length >= queueStruk.length){
+        return <Navigate to={'/hasil-lat-terstruktur'} replace={true}></Navigate>
     }
 
   return (
@@ -47,8 +47,8 @@ export default function QuizStruk() {
         <div className="p-4 sm:ml-64">
         <div className="p-4  mt-14">
           <div className="grid grid-cols-3 gap-4 mb-4 font-[Poppins]">
-            <div className="col-span-2 justify-center items-center rounded-lg bg-gray-50 h-[450px] dark:bg-gray-800">
-              <p className='text-xl font-bold text-[#9A3B3B] text-center my-5'>Postest 1 Aksara Jawa</p>
+            <div className="col-span-2 justify-center items-center rounded-lg bg-gray-50 h-[650px] dark:bg-gray-800">
+              <p className='text-xl font-bold text-[#9A3B3B] text-center my-5'>Latihan Terstruktur Aksara Jawa</p>
               <div className=''>
                 <p className="text-lg font-semibold text-[#6E6E6E] text-center">Soal Kelas 5 SD</p>
               </div>
