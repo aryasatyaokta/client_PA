@@ -1,56 +1,56 @@
 export default [
     {
         id: 1,
-        question: "'dadang sopir pribadi' yen ditulis aksara jawa yaiku ___",
+        question: " 'tuku kresek' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'ꦣꦣꦁꦱꦺꦴꦥꦶꦂꦥꦿꦶꦧꦣꦶ',
-            'ꦢꦢꦁꦱꦸꦥꦶꦂꦥꦿꦶꦧꦢꦶ',
-            'ꦢꦢꦁꦱꦺꦴꦥꦶꦂꦥꦿꦶꦧꦢꦶ',
-            'ꦣꦶꦣꦶꦁꦱꦺꦴꦥꦶꦂꦥꦿꦶꦧꦣꦶ'
+            'ꦠꦸꦏꦸꦏꦿꦱꦏ꧀',
+            'ꦲꦶꦏꦶꦏꦽꦱꦼꦏ꧀',
+            'ꦠꦸꦏꦸꦏꦽꦱꦼꦏ꧀',
+            'ꦠꦸꦏꦸꦏꦿꦱꦏ꧀'
         ]
     },
     {
         id: 2,
-        question: "'riko wingi nyetir mobil' yen ditulis aksara jawa yaiku ___",
+        question: " 'kirang kurmat' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'ꦫꦶꦏꦺꦴꦮꦶꦔꦶꦚꦼꦠꦶꦂꦩꦺꦴꦧꦶꦭ꧀',
-            'ꦫꦺꦴꦏꦶꦮꦶꦔꦶꦚꦼꦠꦶꦂꦩꦺꦴꦧꦶꦭ꧀',
-            'ꦫꦶꦏꦺꦴꦮꦶꦔꦶꦚꦼꦠꦶꦂꦩꦺꦴꦠꦺꦴꦂ',
-            'ꦫꦶꦏꦺꦴꦮꦶꦔꦶꦚꦼꦠꦶꦂꦧꦶꦱ꧀'
+            'ꦏꦸꦫꦁꦏꦶꦂꦩꦠ꧀',
+            'ꦏꦸꦫꦁꦏꦶꦂꦩꦃ',
+            'ꦏꦺꦫꦁꦏꦺꦂꦩ',
+            'ꦏꦶꦫꦁꦏꦸꦂꦩꦠ꧀'
         ]
     },
     {
         id: 3,
-        question: "ꦏꦽꦠꦺꦴꦥꦸꦠꦶꦃꦗꦺꦴꦮꦺꦴ yen ditulis latin yaiku ___",
+        question: " 'widya ngomeng' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'kreta putih jowo',
-            'kreto putih jowo',
-            'kreta putih jawa',
-            'kreto putih jawa'
+            'ꦮꦶꦢꦾꦔꦩꦸꦏ꧀',
+            'ꦮꦶꦢꦾꦔꦺꦴꦩꦺꦁ',
+            'ꦮꦶꦢꦿꦔꦺꦴꦩꦺꦁ',
+            'ꦮꦶꦢꦾꦠꦸꦫꦸ'
         ]
     },
     {
         id: 4,
-        question: "ꦱꦱꦾꦠꦸꦏꦸꦧꦼꦫꦱ꧀ yen ditulis latin yaiku ___",
+        question: " 'milih griya' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'sasya tuku beras',
-            'sasya tuku gula',
-            'sasya tuku sego',
-            'sasya tuku garam'
+            'ꦩꦶꦭꦶꦃꦒꦿꦶꦪ',
+            'ꦩꦶꦭꦶꦃꦒꦿꦶꦪꦺꦴ',
+            'ꦩꦺꦚꦁꦒꦿꦺꦗ',
+            'ꦠꦸꦏꦸꦲꦺꦴꦩꦃ'
         ]
     },
     {
         id: 5,
-        question: "`ꦮꦮꦏꦼꦂꦗꦺꦴꦣꦝꦶꦥꦿꦩꦸꦒꦫꦶ` yen ditulis latin yaiku ___",
+        question: " 'wedhang kopi' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'wawa kerjo dadi dokter',
-            'wawa kerjo dadi guru',
-            'wawa kerjo dadi pramugara',
-            'wawa kerjo dadi pramugari'
+            'ꦮꦺꦝꦁꦠꦺꦃ',
+            'ꦮꦺꦝꦁꦗꦲꦺ',
+            'ꦮꦺꦝꦁꦲꦔꦺꦠ꧀',
+            'ꦮꦺꦝꦁꦏꦺꦴꦥꦶ'
         ]
     }
 ];
 
-export const answerMan2 = [2, 0, 1, 0, 3];
+export const answerMan2 = [2, 3, 1, 0, 3];
 
 // export const answerss = [2, 0, 0, 3, 1];

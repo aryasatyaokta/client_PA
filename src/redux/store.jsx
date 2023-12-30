@@ -15,6 +15,19 @@ import questionbim2_reducer from './questionbim2_reducer';
 import resultbim2_reducer from './resultbim2_reducer';
 import questionman2_reducer from './questionman2_reducer';
 import resultman2_reducer from './resultman2_reducer';
+import questionpost_reducer from './questionpost_reducer';
+import resultpost_reducer from './resultpost_reducer';
+import questionpost2_reducer from './questionpost2_reducer';
+import resultpost2_reducer from './resultpost2_reducer';
+import questionstruk3_reducer from './questionstruk3_reducer';
+import resultstruk3_reducer from './resultstruk3_reducer';
+import questionstruk4_reducer from './questionstruk4_reducer';
+import resultstruk4_reducer from './resultstruk4_reducer';
+import questionstruk5_reducer from './questionstruk5_reducer';
+import resultstruk5_reducer from './resultstruk5_reducer';
+import questionstruk6_reducer from './questionstruk6_reducer';
+import resultstruk6_reducer from './resultstruk6_reducer';
+
 
 const rootReducer = combineReducers({
     questions : questionReducer,
@@ -30,7 +43,19 @@ const rootReducer = combineReducers({
     questionBim2: questionbim2_reducer,
     resultBim2: resultbim2_reducer,
     questionMan2: questionman2_reducer,
-    resultMan2: resultman2_reducer
+    resultMan2: resultman2_reducer,
+    questionPost: questionpost_reducer,
+    resultPost: resultpost_reducer,
+    questionPost2: questionpost2_reducer,
+    resultPost2: resultpost2_reducer,
+    questionStruk3: questionstruk3_reducer,
+    resultStruk3: resultstruk3_reducer,
+    questionStruk4: questionstruk4_reducer,
+    resultStruk4: resultstruk4_reducer,
+    questionStruk5: questionstruk5_reducer,
+    resultStruk5: resultstruk5_reducer,
+    questionStruk6: questionstruk6_reducer,
+    resultStruk6: resultstruk6_reducer,
 })
 
 /** create store with reducer */

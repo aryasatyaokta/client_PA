@@ -1,20 +1,32 @@
 import { PushAnswerBim2 } from '../../hooks/setResult';
-import { useState } from 'react';
-/** redux store import */
+import React, { useRef, useState} from 'react'
 import Sidebar from '../../auth/Sidebar';
 import { useSelector, useDispatch } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { MoveNextQuestionBim2, MovePrevQuestionBim2} from '../../hooks/FetchQuestion';
-import Welcome from '../../images/melek.png'
+import Welcome from '../../images/ceria.png'
 import QuestionBim2 from './QuestionBim2';
+import audioBim from '../../audio/audio_bim_soal.mp3'
 
 export default function QuizBim2() {
 
     const [check, setChecked] = useState(undefined)
+    const Bimbing = useRef(new Audio(audioBim))
+    const [isPlayingBim, setIsPlayingBim] = useState(false);
 
     const resultBim2 = useSelector(state => state.resultBim2.resultBim2);
     const { queueBim2, trace } = useSelector(state => state.questionBim2);
     const dispatch = useDispatch()
+
+    const handleToggleAudioBim = () => {
+      if (isPlayingBim) {
+        Bimbing.current.pause();
+      } else {
+        Bimbing.current.play();
+      }
+      setIsPlayingBim(!isPlayingBim);
+    };
+
 
     function onNext(){
         if(trace < queueBim2.length){
@@ -57,17 +69,27 @@ export default function QuizBim2() {
                   <QuestionBim2 onChecked={onChecked}/>
                 </div>
                 <div className='flex justify-between px-24 h-8 my-9'>
-                  { trace > 0 ? <button className='bg-[#AE9D45] w-40 text-white rounded-sm' onClick={onPrev}>Prev</button> : <div></div> }
-                  <button className='bg-[#9A3B3B] w-40 text-white rounded-sm' onClick={onNext}>Next</button>
+                  { trace > 0 ? <button className='bg-[#AE9D45] w-40 text-white rounded-sm' onClick={onPrev}>Kembali</button> : <div></div> }
+                  <button className='bg-[#9A3B3B] w-40 text-white rounded-sm' onClick={onNext}>Selanjutnya</button>
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-center border-yellow-700 border-2 rounded-xl drop-shadow-xl self-start">
-              <img className='w-52 self-start' alt='' src={Welcome}/>
+            <div className="col-span-1 flex flex-col items-center justify-center mb-44">
+              <div className="border-yellow-700 border-2 rounded-xl drop-shadow-xl w-80 flex flex-col items-center justify-center">
+                <img className="w-52" alt="" src={Welcome} />
+                <p className="text-[#9A3B3B] mt-4 text-center">Haloo, jika kamu kesulitan mengerjakan soal, klik button aksara ya untuk membantu kamu</p>
+              </div>
+              <div className="mt-4">
+                <button onClick={handleToggleAudioBim}
+                  className="bg-[#9A3B3B] px-4 py-2 text-white rounded-lg"
+                >
+                  {isPlayingBim ? 'Pause Joko' : 'Suara Joko'}
+                </button>
+              </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
-    </div>
   )
 }

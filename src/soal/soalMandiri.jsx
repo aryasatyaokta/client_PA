@@ -1,52 +1,52 @@
 export default [
     {
         id: 1,
-        question: "ꦥꦫꦥꦫꦒ pangucapane sing bener yaiku ___",
+        question: " 'traweh' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'para parago',
-            'para parogo',
-            'para pagara',
-            'para paraga'
+            'ꦠꦿꦮꦺꦴꦃ',
+            'ꦠꦿꦮꦶꦃ',
+            'ꦠꦿꦮꦼꦃ',
+            'ꦠꦿꦮꦺꦃ'
         ]
     },
     {
         id: 2,
-        question: "'aja mara rana' yen ditulis aksara jawa yaiku ___",
+        question: " 'ngalor' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'ꦲꦗꦩꦫꦫꦤ',
-            'ꦲꦫꦩꦫꦫꦤ',
-            'ꦲꦗꦩꦫꦤꦫ',
-            'ꦲꦗꦩꦫ'
+            'ꦔꦭꦺꦴꦂ',
+            'ꦔꦭꦺꦃ',
+            'ꦔꦭꦺꦴꦁ',
+            'ꦔꦗꦶ'
         ]
     },
     {
         id: 3,
-        question: "'ana wara wara yaiku sandhangan kanggo swara ___",
+        question: " 'kresek' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'ꦫꦤꦮꦫꦮꦫ',
-            'ꦲꦤꦮꦫꦲꦫ',
-            'ꦭꦤꦮꦫꦮꦫ',
-            'ꦲꦤꦮꦫꦮꦫ'
+            'ꦏꦿꦥꦺꦠ꧀',
+            'ꦏꦿꦱꦏ꧀',
+            'ꦏꦿꦱꦺꦏ꧀',
+            'ꦏꦽꦱꦼꦏ꧀'
         ]
     },
     {
         id: 4,
-        question: "ꦗꦏꦭꦥ yen ditulis latin yaiku ___",
+        question: "'jurang' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'jaya lapa',
-            'jaka pala',
-            'jaka lapa',
-            'jaya mapa'
+            'ꦗꦼꦫꦁ',
+            'ꦗꦶꦫꦺꦴꦁ',
+            'ꦗꦸꦫꦁ',
+            'ꦗꦺꦫꦁ'
         ]
     },
     {
         id: 5,
-        question: "`wanara saba` yen ditulis aksara jawa yaiku ___",
+        question: " 'nyetir' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'ꦮꦫꦤꦱꦧ',
-            'ꦱꦧꦮꦤꦫ',
-            'ꦮꦤꦫꦱꦧ',
-            'ꦮꦫꦤꦧꦱ'
+            'ꦚꦼꦠꦺꦴꦂ',
+            'ꦚꦼꦠꦸꦂ',
+            'ꦚꦺꦠꦶꦂ',
+            'ꦚꦼꦠꦶꦂ'
         ]
     }
 ];

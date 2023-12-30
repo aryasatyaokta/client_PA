@@ -1,81 +1,80 @@
+import audio1 from '../audio/audio2struk11.mp3';
+import audio2 from '../audio/audio2struk12.mp3';
+import audio3 from '../audio/audio2struk13.mp3';
+import audio4 from '../audio/audio2struk14.mp3';
+import audio5 from '../audio/audio2struk15.mp3';
+
 export default [
     {
         id: 1,
-        question: "'sega soto' yen ditulis aksara jawa yaiku ___",
+        question: " 'sawi wingi' yen ditulis aksara Jawa yaiku ___ ",
         options: [
-            'ꦱꦺꦒꦱꦠ',
-            'ꦱꦼꦒꦱꦺꦴꦠꦺꦴ',
-            'ꦱꦼꦒꦣꦺꦴꦮꦺꦴ',
-            'ꦱꦺꦒꦱꦺꦴꦠꦺꦴ'
+            'ꦱꦮꦺꦮꦶꦔꦺ',
+            'ꦱꦮꦼꦮꦶꦔꦶ',
+            'ꦱꦮꦶꦮꦶꦔꦶ',
+            'ꦱꦮꦺꦴꦮꦶꦔꦺꦴ'
         ],
         struktur: [
-            'Aksara Jawa "ꦫ" unine "ra"',
-            'Aksara Jawa "ꦗ" unine "ja"',
-            'Aksara Jawa "ꦏ" unine "ka"',
-            'Aksara Jawa "ꦪ" unine "ya"'
-        ]
+            'Tembung sawi, aksara sa lan aksara wa diwenehi wulu "i" dadi wi sawise iku dilanjut tembung wingi, aksara wa diwenehi wulu "i" dadi wi lan aksara nga diwenehi wulu "i" dadi ngi',
+        ],
+        audio: audio1
     },
     {
         id: 2,
-        question: "ꦱꦼꦏꦺꦴꦭꦃꦱꦺꦴꦫꦺ aksara ing samping iki unine ___",
+        question: " 'nyapu pura' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'sekolah bengi',
-            'sekolah awan',
-            'sekolah isuk',
-            'sekolah sore'
+            'ꦚꦥꦸꦥꦸꦫ',
+            'ꦚꦥꦶꦥꦶꦫ',
+            'ꦚꦥꦸꦥꦫ',
+            'ꦚꦥꦺꦥꦼꦫ'
         ],
         struktur: [
-            'Aksara Jawa "ꦩ" unine "ma"',
-            'Aksara Jawa "ꦕ" unine "ca"',
-            'Aksara Jawa "ꦏ" unine "ka"',
-            'Aksara Jawa "ꦠ" unine "ta"'
-        ]
+            'Tembung nyapu, aksara nya lan aksara pa diwenehi suku "u" dadi pu sawise iku dilanjut tembung pura, aksara pa diwenehi suku "u" dadi pu lan aksara ra',
+        ],
+        audio: audio2
     },
     {
         id: 3,
-        question: "ꦠꦸꦏꦸꦒꦸꦭꦺꦴ aksara ing samping iki unine ___",
+        question: " 'tape pare' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'tuku gula',
-            'tuku gulo',
-            'tuku garam',
-            'tuku garem'
+            'ꦠꦥꦶꦥꦫꦺ',
+            'ꦠꦥꦺꦥꦫꦶ',
+            'ꦠꦥꦼꦥꦫꦼ',
+            'ꦠꦥꦺꦥꦫꦺ'
         ],
         struktur: [
-            '1. Pisahkan kata kata terlebih dahulu',
-            '2. Ambil 2 kata gabungan dari huruf konsonan dan vokal',
-            '3. Cocokkan kata-kata nya dengan aksara Jawa',
-        ]
+            'Tembung tape, aksara ta lan aksara pa diwenehi taling "é" dadi pe sawise iku dilanjut tembung pare, aksara pa lan aksara ra diwenehi taling "é" dadi re'
+        ],
+        audio: audio3
     },
     {
         id: 4,
-        question: " 'mawar abang' yen ditulis aksara jawa yaiku ___",
+        question: " 'dhona moco' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'ꦩꦮꦂꦏꦸꦤꦶꦁ',
-            'ꦩꦮꦂꦱꦧꦁ',
-            'ꦩꦮꦂꦲꦶꦗꦺꦴ',
-            'ꦩꦮꦂꦲꦧꦁ'
+            'ꦣꦺꦴꦤꦩꦕ',
+            'ꦣꦤꦩꦺꦴꦕꦺꦴ',
+            'ꦣꦶꦤꦩꦺꦴꦕꦶ',
+            'ꦣꦺꦴꦤꦩꦺꦴꦕꦺꦴ'
         ],
         struktur: [
-            '1. Pisahkan kata kata terlebih dahulu',
-            '2. Ambil 2 kata gabungan dari huruf konsonan dan vokal',
-            '3. Cocokkan kata-kata nya dengan aksara Jawa',
-        ]
+            'Tembung dhona, aksara dha diwenehi taling tarung "o" dadi dho lan aksara na sawise iku dilanjut tembung moco, aksara ma diwenehi taling tarung "o" dadi mo lan aksara ca diwenehi taling tarung "o" dadi co',
+        ],
+        audio: audio4
     },
     {
         id: 5,
-        question: " `ꦏꦿꦱꦥꦲꦶꦠ꧀` pangucapan sing bener yaiku ___",
+        question: " 'sega teka' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'krasa legi',
-            'krasa manis',
-            'krasa pahit',
-            'krasa asem'
+            'ꦱꦼꦒꦠꦼꦏꦶ',
+            'ꦱꦼꦒꦠꦼꦏ',
+            'ꦱꦼꦒꦶꦠꦏꦶ',
+            'ꦱꦼꦒꦺꦴꦠꦺꦏꦺꦴ'
         ],
         struktur: [
-            '1. Pisahkan kata kata terlebih dahulu',
-            '2. Ambil 2 kata gabungan dari huruf konsonan dan vokal',
-            '3. Cocokkan kata-kata nya dengan aksara Jawa',
-        ]
-    }
+            'Tembung sega, aksara sa diwenehi pepet "e" dadi se lan aksara ga sawise iku dilanjut tembung teka, aksara ta diwenehi pepet "e" dadi te lan aksara ga'
+        ],
+        audio: audio5
+    },
 ];
 
-export const answerStruk2 = [1, 3, 1, 3, 2];
+export const answerStruk2 = [2, 0, 3, 3, 1];

@@ -1,52 +1,52 @@
 export default [
     {
         id: 1,
-        question: "Aksara jawa cacahe(akehe) ana ___",
+        question: "'busi' yen ditulis aksara Jawa yaiku ___",
         options: [
-            '20',
-            '21',
-            '22',
-            '23'
+            'ꦧꦸꦱꦶ',
+            'ꦲꦶꦧꦸ',
+            'ꦧꦸꦣꦶ',
+            'ꦱꦶꦧꦸ'
         ]
     },
     {
         id: 2,
-        question: " 'ana cara' yen ditulis aksara jawa yaiku ___",
+        question: " 'telo' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'ꦥꦤꦕꦫ',
-            'ꦲꦕꦫ',
-            'ꦲꦤꦕꦫ',
-            'ꦪꦤꦕꦫ'
+            'ꦠꦼꦭꦺꦴ',
+            'ꦠꦺꦭ',
+            'ꦠꦺꦭꦺꦴ',
+            'ꦥꦼꦲꦺꦴ'
         ]
     },
     {
         id: 3,
-        question: "ꦺꦴ yaiku sandhangan kanggo swara ___",
+        question: " 'gelar' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'a',
-            'u',
-            'e',
-            'o'
+            'ꦒꦺꦭꦂ',
+            'ꦒꦺꦭꦂ',
+            'ꦔꦼꦭꦂ',
+            'ꦒꦼꦭꦂ'
         ]
     },
     {
         id: 4,
-        question: "ꦧꦭꦗꦪ yen ditulis latin yaiku ___",
+        question: " 'gapyak' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'bolo joyo',
-            'bala jaya',
-            'bolo jaya',
-            'bala joyo'
+            'ꦒꦺꦧꦾꦂ',
+            'ꦒꦥꦾꦏ꧀',
+            'ꦒꦸꦧꦾꦂ',
+            'ꦒꦺꦧꦸꦏ꧀'
         ]
     },
     {
         id: 5,
-        question: "`ꦝ` aksara jawa ing samping iki unine ___",
+        question: " 'grabah' yen ditulis aksara Jawa yaiku ___",
         options: [
-            'da',
-            'pa',
-            'nya',
-            'dha'
+            'ꦒꦧꦃ',
+            'ꦒꦗꦃ',
+            'ꦒꦿꦱꦃ',
+            'ꦒꦿꦧꦃ'
         ]
     }
 ];

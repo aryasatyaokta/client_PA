@@ -1,11 +1,10 @@
 import { PushAnswerMan2 } from '../../hooks/setResult';
 import { useState } from 'react';
-/** redux store import */
 import Sidebar from '../../auth/Sidebar';
 import { useSelector, useDispatch } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { MoveNextQuestionMan2, MovePrevQuestionMan2} from '../../hooks/FetchQuestion';
-import Welcome from '../../images/melek.png'
+import Welcome from '../../images/ceria.png'
 import QuestionMan2 from './QuestionMan2';
 
 export default function QuizMan2() {
@@ -57,8 +56,8 @@ export default function QuizMan2() {
                   <QuestionMan2 onChecked={onChecked}/>
                 </div>
                 <div className='flex justify-between px-24 h-8 my-9'>
-                  { trace > 0 ? <button className='bg-[#AE9D45] w-40 text-white rounded-sm' onClick={onPrev}>Prev</button> : <div></div> }
-                  <button className='bg-[#9A3B3B] w-40 text-white rounded-sm' onClick={onNext}>Next</button>
+                  { trace > 0 ? <button className='bg-[#AE9D45] w-40 text-white rounded-sm' onClick={onPrev}>Kembali</button> : <div></div> }
+                  <button className='bg-[#9A3B3B] w-40 text-white rounded-sm' onClick={onNext}>Selanjutnya</button>
                 </div>
               </div>
             </div>

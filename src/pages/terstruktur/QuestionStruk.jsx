@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-/** Custom Hook */
 import { useFetchQestionStruk } from '../../hooks/FetchQuestion'
-import { updateResult, updateResultStruk } from '../../hooks/setResult'
+import { updateResultStruk } from '../../hooks/setResult'
 
 
 export default function QuestionStruk({ onChecked }) {
@@ -11,14 +10,9 @@ export default function QuestionStruk({ onChecked }) {
     const [{ isLoading, apiData, serverError}] = useFetchQestionStruk() 
     const { trace } = useSelector(state => state.questionStruk);
     const result = useSelector(state => state.resultStruk.resultsStruk);
-
-    console.log("useSelector(state => state.questions)",useSelector(state => state));
-
     const questions = useSelector(state => state.questionStruk.queueStruk[state.questionStruk.trace])
     const dispatch = useDispatch()
-
-    console.log("test view",questions);
-
+    
     useEffect(() => {
         dispatch(updateResultStruk({ trace, checked}))
     }, [checked])
@@ -34,7 +28,13 @@ export default function QuestionStruk({ onChecked }) {
 
   return (
     <div>
-        <h2 className='text-left'>{questions?.question}</h2>
+        <h2 className='text-left text-lg'>{questions?.question}</h2>
+        {questions?.audio && (
+          <audio key={`${questions.id}-${trace}`} controls>
+            <source src={questions.audio} type='audio/mp3' />
+            Your browser does not support the audio element.
+          </audio>
+        )}
         <ul key={questions?.id}>
             {
               questions?.options.map((q, i) => (
@@ -46,7 +46,7 @@ export default function QuestionStruk({ onChecked }) {
                       id={`q${i}-option`}
                       onChange={() => onSelect(i)}
                   />
-                  <label htmlFor={`q${i}-option`} className=''>{q}</label>
+                  <label htmlFor={`q${i}-option`} className='text-xl'>{q}</label>
                   <div className={`check ${result[trace] === i ? 'checked' : '' }`}></div>
                 </li>
               )) 
@@ -61,7 +61,7 @@ export default function QuestionStruk({ onChecked }) {
                         ))}
                     </ul>
                 )}
-            </div>
+        </div>
     </div>
   )
 }

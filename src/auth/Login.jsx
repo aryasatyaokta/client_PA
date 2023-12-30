@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import LoginA from '../images/A.png'
 import BgLogin from '../images/BgLogin.png'
 import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 export default function Login() {
   const navigate = useNavigate();
@@ -16,21 +16,32 @@ export default function Login() {
       password: password
     })
     .then(res => {
-      console.log(res.data)
+      console.log(res.data.name, ' : ', res.data)
       if(res.data.code === 500){
-        alert('User Not Found')
+        alert('Pengguna tidak diketahui')
       }
       if(res.data.code === 404){
-        alert('Password is wrong')
+        alert('Password salah')
       }
       if(res.data.code === 200){
+        sessionStorage.setItem('TOKEN', res.data.token)
+        sessionStorage.setItem('name', res.data.name)
         navigate('/')
-        localStorage.setItem('TOKEN', res.data.token)
+        window.location.reload()
       }
     }).catch(err => {
       console.log(err)
     })
   }
+
+  useEffect(() => {
+    const storedToken = sessionStorage.getItem('TOKEN');
+    const storedName = sessionStorage.getItem('name');
+    if (storedToken && storedName){
+      navigate('/')
+    } 
+  }, [])
+
   return (
     <div className='mx-10 grid grid-cols-3'>
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">

@@ -1,52 +1,56 @@
 import Sidebar from '../../auth/Sidebar'
 import Nangis from '../../images/nangis.png'
 import Kagum from '../../images/kagum.png'
-import React from 'react'
-// import '../styles/Result.css';
-import { Link } from 'react-router-dom';
-
+import React, {useState, useEffect} from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { attempts_NumberStruk2, earnPoints_NumberStruk2, flagResultStruk2 } from '../../helper/helper';
-
-/** import actions  */
-import { resetAllActionStruk2 } from '../../redux/questionstruk2_reducer';
 import { usePublishResultStruk2 } from '../../hooks/setResult';
-import { resetResultActionStruk2 } from '../../redux/resultstruk2_reducer';
+import audioNilaiKurang from '../../audio/audio_nil_kurang.mp3'
+import audioNilaiCukup from '../../audio/audio_nilai_cukup.mp3'
+
+
+import axios from 'axios';
 
 
 export default function ResultStruk2() {
 
+    const navigate = useNavigate();
     const dispatch = useDispatch()
-    // const { questions : { queue ,answers}, result : { result, userId}}  = useSelector(state => state)
     const { questionStruk2: { queueStruk2, answerStruk2 }, resultStruk2: { resultsStruk2, userIdStruk2 } } = useSelector(state => state);
 
-
-
-    console.log("Answers:", answerStruk2);
-    console.log("Result:", resultsStruk2);
-    // console.log("Total Points:", totalPoints);
-
-
-    const totalPoints = queueStruk2.length * 1.6; 
+    const totalPoints = queueStruk2.length * 20; 
     const attempts = attempts_NumberStruk2(resultsStruk2);
-    const earnPoints = earnPoints_NumberStruk2(resultsStruk2, answerStruk2, 1.6)
-    console.log("Earn Points:", earnPoints);
+    const earnPoints = earnPoints_NumberStruk2(resultsStruk2, answerStruk2, 20)
     const flag = flagResultStruk2(totalPoints, earnPoints)
-    console.log("Flag:", flag);
 
+    const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+    const [audioElement] = useState(new Audio(earnPoints >= 80 ? audioNilaiCukup : audioNilaiKurang));
 
-    /** store user result */
     usePublishResultStruk2({ 
         resultsStruk2, 
-        username : userIdStruk2,
+        username : sessionStorage.getItem('name'),
         attempts,
         points: earnPoints,
-        achived : flag ? "Passed" : "Failed" });
+        achived : flag ? "Berhasil" : "Gagal" });
 
-    function onRestart(){
-        dispatch(resetAllActionStruk2())
-        dispatch(resetResultActionStruk2())
+    async function onRestart(){
+      await axios.delete(`http://localhost:5000/api/resultstruk2?name=${sessionStorage.getItem('name')}`)
+      navigate("/latihan-struktur")
+      navigate(0);
     }
+
+    useEffect(() => {
+    }, [audioElement])
+  
+    const handleToggleAudio = () => {
+      if (isAudioPlaying) {
+        audioElement.pause();
+      } else {
+        audioElement.play();
+      }
+      setIsAudioPlaying(!isAudioPlaying);
+    };
 
   return (
     <div>
@@ -62,49 +66,59 @@ export default function ResultStruk2() {
               <div className='flex flex-col items-center my-10'>
                 <div className='py-4 border-2 border-[#9A3B3B] w-1/2 h-full'>
                   <div className='flex justify-between px-2'>
-                    <span>Username :</span>
-                    <span className='font-bold'>{userIdStruk2 || 0}</span>
+                    <span>Nama: </span>
+                    <span className='font-bold'>{sessionStorage.getItem('name')}</span>
                   </div>
                   <div className='flex justify-between px-2 py-2'>
-                    <span>Total Quiz Points : </span>
+                    <span>Nilai Maksimum: </span>
                     <span className='font-bold'>{totalPoints || 0}</span>
                   </div>
                   <div className='flex justify-between px-2 py-2'>
-                    <span>Total Questions :</span>
+                    <span>Total Pertanyaan: </span>
                     <span className='font-bold'>{queueStruk2.length || 0}</span>
                   </div>
                   <div className='flex justify-between px-2 py-2'>
-                    <span>Total Attempts :</span>
+                    <span>Soal Dijawab: </span>
                     <span className='font-bold'>{attempts || 0}</span>
                   </div>
                   <div className='flex justify-between px-2 py-2'>
-                    <span>Total Earn Points :</span>
+                    <span>Nilai Kamu: </span>
                     <span className='font-bold'>{earnPoints || 0}</span>
                   </div>
                   <div className='flex justify-between px-2 py-2'>
-                    <span>Quiz Result :</span>
-                    <span style={{color : `${flag ? "#82CD47" : "#ff2a66"}`}} className='font-bold'>{flag ? "Passed" : "Failed"}</span>
+                    <span>Status Nilai: </span>
+                    <span style={{color : `${flag ? "#82CD47" : "#ff2a66"}`}} className='font-bold'>{flag ? "Berhasil" : "Gagal"}</span>
                   </div>
                 </div>  
               </div>
 
               <div className='flex flex-col items-center justify-center'>
                 {earnPoints < 80 ? (
-                  <button onClick={onRestart} className='bg-[#9A3B3B] px-16 py-2 text-white rounded-lg'>Restart</button>
+                  <button onClick={onRestart} className='bg-[#9A3B3B] px-16 py-2 text-white rounded-lg'>Ulangi</button>
                 ) : (
-                  <Link to='/latihan-terbimbing' className='bg-[#9A3B3B] px-16 py-2 text-white rounded-lg'>Next</Link>
+                  <Link to='/lat-struktur' className='bg-[#9A3B3B] px-16 py-2 text-white rounded-lg'>Selanjutnya</Link>
                 )}
               </div>
-              {/* <div className='my-10'>
-                <ResultTable nama={userId}/>
-              </div> */}
             </div>
-            <div className="flex items-center justify-center border-yellow-700 border-2 rounded-xl drop-shadow-xl self-start">
+            <div>
+            <div className="flex flex-col items-center justify-center border-yellow-700 border-2 rounded-xl drop-shadow-xl self-start">
             {earnPoints >= 80 ? (
-              <img className='w-52 self-start' alt='' src={Kagum} />
-              ) : (
-              <img className='w-52 self-start' alt='' src={Nangis} />
+                  <>
+                    <img className='w-52' alt='' src={Kagum} />
+                    <p className="text-[#9A3B3B] mt-4 text-center">Asikk, nilai kamu sudah cukup, klik tombol selanjutnya yaa</p>
+                  </>
+                ) : (
+                  <>
+                    <img className='w-52' alt='' src={Nangis} />
+                    <p className="text-[#9A3B3B] mt-4 text-center">Yahh, nilai kamu masih kurang, ulangi lagi yaa</p>
+                  </>
             )}
+            </div>
+            <div className="flex flex-col col-span-3 items-end justify-end mr-28 self-start mt-4">
+              <button type="button" onClick={handleToggleAudio} className="text-white bg-[#9A3B3B] rounded-md p-2">
+                {isAudioPlaying ? 'Pause Joko' : 'Suara Joko'}
+              </button>
+            </div>
             </div>
           </div>
         </div>

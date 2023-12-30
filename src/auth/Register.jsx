@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import LoginA from '../images/A.png'
 import BgLogin from '../images/BgLogin.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useHis } from 'react-router-dom';
 import axios from 'axios'
 
 export default function Register() {
@@ -9,25 +9,39 @@ export default function Register() {
   const [absen, setAbsen] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
+    if (!name || !absen || !email || !password) {
+      alert('Semua kolom harus diisi.');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Email tidak sesuai.');
+      return;
+    }
+
     axios.post('http://localhost:5000/register', {
       name: name,
       absen: absen,
       email: email,
-      password: password
+      password: password,
     })
-    .then(res => {
-      console.log(res.data)
-      if (res.data.code === 200) {
-          alert('Signup success.')
-      } else {
-          alert('Error.')
-      }
-  }).catch(err => {
-      console.log(err)
-  })
-  }
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.code === 200) {
+          alert('Pendaftaran berhasil.');
+          navigate('/login');
+        } else {
+          alert('Error.');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className='mx-10 grid grid-cols-3'>
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
@@ -59,7 +73,7 @@ export default function Register() {
                 <input 
                   id="absen" 
                   name="absen" 
-                  type="text" 
+                  type="number" 
                   required className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none sm:text-sm sm:leading-6"
                   value={absen}
                   onChange={(e) => {
@@ -103,7 +117,9 @@ export default function Register() {
             </div>
       
             <div>
-              <button type="submit" onClick={handleSubmit} className="flex w-full justify-center rounded-md bg-[#9A3B3B] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#6F2525] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Daftar</button>
+              {/* <Link to="/login"> */}
+                <button type="button" onClick={handleSubmit} className="flex w-full justify-center rounded-md bg-[#9A3B3B] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#6F2525] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Daftar</button>
+              {/* </Link> */}
             </div>
             <p className="mt-10 text-center text-sm text-gray-500">
             sudah punya akun?

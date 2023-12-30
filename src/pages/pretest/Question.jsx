@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-/** Custom Hook */
 import { useFetchQestion } from '../../hooks/FetchQuestion'
 import { updateResult } from '../../hooks/setResult'
-
 
 export default function Questions({ onChecked }) {
 
@@ -30,7 +28,7 @@ export default function Questions({ onChecked }) {
 
   return (
     <div>
-        <h2 className='text-left'>{questions?.question}</h2>
+        <h2 className='text-left text-lg'>{questions?.question}</h2>
         <ul key={questions?.id}>
             {
               questions?.options.map((q, i) => (
@@ -42,7 +40,7 @@ export default function Questions({ onChecked }) {
                       id={`q${i}-option`}
                       onChange={() => onSelect(i)}
                   />
-                  <label htmlFor={`q${i}-option`} className=''>{q}</label>
+                  <label htmlFor={`q${i}-option`} className='text-xl'>{q}</label>
                   <div className={`check ${result[trace] === i ? 'checked' : '' }`}></div>
                 </li>
               )) 

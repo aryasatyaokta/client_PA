@@ -1,12 +1,11 @@
 import { PushAnswer } from '../../hooks/setResult';
 import { useState } from 'react';
-/** redux store import */
 import Sidebar from '../../auth/Sidebar';
 import { useSelector, useDispatch } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { MoveNextQuestion, MovePrevQuestion } from '../../hooks/FetchQuestion';
 import Question from './Question'
-import Welcome from '../../images/melek.png'
+import Welcome from '../../images/ceria.png'
 
 export default function Quiz() {
 
@@ -48,7 +47,7 @@ export default function Quiz() {
         <div className="p-4  mt-14">
           <div className="grid grid-cols-3 gap-4 mb-4 font-[Poppins]">
             <div className="col-span-2 justify-center items-center rounded-lg bg-gray-50 h-[450px] dark:bg-gray-800">
-              <p className='text-xl font-bold text-[#9A3B3B] text-center my-5'>Pretest Aksara Jawa</p>
+              <p className='text-xl font-bold text-[#9A3B3B] text-center my-5'>Pretest Sandhangan</p>
               <div className=''>
                 <p className="text-lg font-semibold text-[#6E6E6E] text-center">Soal Kelas 5 SD</p>
               </div>
@@ -57,8 +56,8 @@ export default function Quiz() {
                   <Question onChecked={onChecked}/>
                 </div>
                 <div className='flex justify-between px-24 h-8 my-9'>
-                  { trace > 0 ? <button className='bg-[#AE9D45] w-40 text-white rounded-sm' onClick={onPrev}>Prev</button> : <div></div> }
-                  <button className='bg-[#9A3B3B] w-40 text-white rounded-sm' onClick={onNext}>Next</button>
+                  { trace > 0 ? <button className='bg-[#AE9D45] w-40 text-white rounded-sm' onClick={onPrev}>Kembali</button> : <div></div> }
+                  <button className='bg-[#9A3B3B] w-40 text-white rounded-sm' onClick={onNext}>Selanjutnya</button>
                 </div>
               </div>
             </div>

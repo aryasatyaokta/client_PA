@@ -11,7 +11,6 @@ import Materi2 from './pages/materi/Materi2';
 import Materi3 from './pages/materi/Materi3';
 import Quiz from './pages/pretest/Quiz'
 import Result from './pages/pretest/Result';
-import { CheckUserExist, CheckUserExistBim, CheckUserExistBim2, CheckUserExistMan, CheckUserExistMan2, CheckUserExistStruk, CheckUserExistStruk2 } from './helper/helper';
 import Struktur from './pages/terstruktur/Struktur';
 import QuizStruk from './pages/terstruktur/QuizStruk';
 import ResultStruk from './pages/terstruktur/ResultStruk';
@@ -34,57 +33,109 @@ import GabMateri from './gabpages/GabMateri';
 import GabStruktur from './gabpages/GabStruktur';
 import GabBimbing from './gabpages/GabBimbing';
 import GabMandiri from './gabpages/GabMandiri';
+import Posttest from './pages/posttest/Posttest';
+import QuizPost from './pages/posttest/QuizPost';
+import ResultPost from './pages/posttest/ResultPost';
+import Posttest2 from './pages/posttest2/Posttest2';
+import QuizPost2 from './pages/posttest2/QuizPost2';
+import ResultPost2 from './pages/posttest2/ResultPost2';
+import GabPosttest from './gabpages/GabPosttest';
+import PrivateRoute from './auth/PrivateRoute';
+import Struktur3 from './pages/terstruktur3/Struktur3';
+import QuizStruk3 from './pages/terstruktur3/QuizStruk3';
+import ResultStruk3 from './pages/terstruktur3/ResultStruk3';
+import Struktur4 from './pages/terstruktur4/Struktur4';
+import QuizStruk4 from './pages/terstruktur4/QuizStruk4';
+import ResultStruk4 from './pages/terstruktur4/ResultStruk4';
+import Struktur5 from './pages/terstruktur5/Struktur5';
+import QuizStruk5 from './pages/terstruktur5/QuizStruk5';
+import ResultStruk5 from './pages/terstruktur5/ResultStruk5';
+import Struktur6 from './pages/terstruktur6/Struktur6';
+import QuizStruk6 from './pages/terstruktur6/QuizStruk6';
+import ResultStruk6 from './pages/terstruktur6/ResultStruk6';
+import { useEffect } from 'react';
 
 function App() {
 
+  // useEffect(() => {
+  //   const handleBeforeUnload = () => {
+  //     sessionStorage.removeItem('TOKEN')
+  //   }
+  //   window.addEventListener('beforeunload', handleBeforeUnload);
+  //   return () => {
+  //     window.removeEventListener('beforeunload', handleBeforeUnload)
+  //   }
+  // }, []);
   
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Dashboard/>} />
+          <Route path="/" element={<PrivateRoute element={<Dashboard />} />} />
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register />} />
-          <Route path="/pretest" element={<Pretest />} />
-          <Route path="/materi" element={<Materi />} />
-          <Route path="/materi2" element={<Materi2 />} />
-          <Route path="/materi3" element={<Materi3 />} />
-          <Route path="/quiz-pretest" element={<CheckUserExist><Quiz/></CheckUserExist>}/>
-          <Route path="/hasil-pretest" element={<CheckUserExist><Result/></CheckUserExist>}/>
-          <Route path="/lat-terstruktur" element={<Struktur />} />
-          <Route path="/quiz-lat-terstruktur" element={<CheckUserExistStruk><QuizStruk /></CheckUserExistStruk>} />
-          <Route path="/hasil-lat-terstruktur" element={<CheckUserExistStruk><ResultStruk /></CheckUserExistStruk>} />
-          <Route path="/lat-terbimbing" element={<Bimbing />} />
-          <Route path="/quiz-lat-terbimbing" element={<CheckUserExistBim><QuizBim/></CheckUserExistBim>} />
-          <Route path="/hasil-lat-terbimbing" element={<CheckUserExistBim><ResultBim /></CheckUserExistBim>} />
-          <Route path="/lat-mandiri" element={<Mandiri />} />
-          <Route path="/quiz-lat-mandiri" element={<CheckUserExistMan><QuizMan/></CheckUserExistMan>} />
-          <Route path="/hasil-lat-mandiri" element={<CheckUserExistMan><ResultMan /></CheckUserExistMan>} />
+          <Route path="/pretest" element={<PrivateRoute element={<Pretest />} />} />
+          <Route path="/materi" element={<PrivateRoute element={<Materi />} />} />
+          <Route path="/materi2" element={<PrivateRoute element={<Materi2 />} />} />
+          <Route path="/materi3" element={<PrivateRoute element={<Materi3 />} />} />
 
-          /** Terstruktur 2 */
-          <Route path="/lat-struktur" element={<Struktur2 />} />
-          <Route path="/quiz-lat-struktur" element={<CheckUserExistStruk2><QuizStruk2/></CheckUserExistStruk2>} />
-          <Route path="/hasil-lat-struktur" element={<CheckUserExistStruk2><ResultStruk2 /></CheckUserExistStruk2>} />
-          /** ============= */
+          <Route path="/quiz-pretest" element={<PrivateRoute element={<Quiz/>} />}/>
+          <Route path="/hasil-pretest" element={<PrivateRoute element={<Result/>} />}/>
 
-          /** Terbimbing 2 */
-          <Route path="/lat-bimbing" element={<Bimbing2 />} />
-          <Route path="/quiz-lat-bimbing" element={<CheckUserExistBim2><QuizBim2/></CheckUserExistBim2>} />
-          <Route path="/hasil-lat-bimbing" element={<CheckUserExistBim2><ResultBim2 /></CheckUserExistBim2>} />
-          /** ============ */
+          <Route path="/lat-terstruktur" element={<PrivateRoute element={<Struktur />} />} />
+          <Route path="/quiz-lat-terstruktur" element={<PrivateRoute element={<QuizStruk />} />} />
+          <Route path="/hasil-lat-terstruktur" element={<PrivateRoute element={<ResultStruk />} />} />
+          
+          <Route path="/lat-terbimbing" element={<PrivateRoute element={<Bimbing />} />} />
+          <Route path="/quiz-lat-terbimbing" element={<PrivateRoute element={<QuizBim/>} />} />
+          <Route path="/hasil-lat-terbimbing" element={<PrivateRoute element={<ResultBim />} />} />
+          
+          <Route path="/lat-mandiri" element={<PrivateRoute element={<Mandiri />} />} />
+          <Route path="/quiz-lat-mandiri" element={<PrivateRoute element={<QuizMan/>} />}/>
+          <Route path="/hasil-lat-mandiri" element={<PrivateRoute element={<ResultMan />} />}/>
 
-          /** Mandiri 2 */
-          <Route path="/latihan-mandiri" element={<Mandiri2 />} />
-          <Route path="/quiz-latihan-mandiri" element={<CheckUserExistMan2><QuizMan2/></CheckUserExistMan2>} />
-          <Route path="/hasil-latihan-mandiri" element={<CheckUserExistMan2><ResultMan2 /></CheckUserExistMan2>} />
-          /** ========= */
+          <Route path="/lat-struktur" element={<PrivateRoute element={<Struktur2 />} />} />
+          <Route path="/quiz-lat-struktur" element={<PrivateRoute element={<QuizStruk2/>} />} />
+          <Route path="/hasil-lat-struktur" element={<PrivateRoute element={<ResultStruk2 />} />} />
 
-          /** Gabungan */
-          <Route path="/materii" element={<CheckUserExist><GabMateri /></CheckUserExist>}/>
-          <Route path="/latihan-struktur" element={<CheckUserExist><GabStruktur /></CheckUserExist>}/>
-          <Route path="/latihan-terbimbing" element={<CheckUserExist><GabBimbing /></CheckUserExist>}/>
-          <Route path="/latihan-mandirii" element={<CheckUserExist><GabMandiri/></CheckUserExist>}/>
-          /** ======== */
+          <Route path="/latihan-struktur2" element={<PrivateRoute element={<Struktur3 />} />} />
+          <Route path="/quiz-lat-struktur2" element={<PrivateRoute element={<QuizStruk3/>} />} />
+          <Route path="/hasil-lat-struktur2" element={<PrivateRoute element={<ResultStruk3 />} />} />
+
+          <Route path="/latihan-struktur3" element={<PrivateRoute element={<Struktur4 />} />} />
+          <Route path="/quiz-lat-struktur3" element={<PrivateRoute element={<QuizStruk4/>} />} />
+          <Route path="/hasil-lat-struktur3" element={<PrivateRoute element={<ResultStruk4 />} />} />
+          
+          <Route path="/latihan-struktur4" element={<PrivateRoute element={<Struktur5 />} />} />
+          <Route path="/quiz-lat-struktur4" element={<PrivateRoute element={<QuizStruk5 />} />} />
+          <Route path="/hasil-lat-struktur4" element={<PrivateRoute element={<ResultStruk5 />} />} />
+
+          <Route path="/latihan-struktur5" element={<PrivateRoute element={<Struktur6 />} />} />
+          <Route path="/quiz-lat-struktur5" element={<PrivateRoute element={<QuizStruk6 />} />} />
+          <Route path="/hasil-lat-struktur5" element={<PrivateRoute element={<ResultStruk6 />} />} />
+
+          <Route path="/lat-bimbing" element={<PrivateRoute element={<Bimbing2 />} />} />
+          <Route path="/quiz-lat-bimbing" element={<PrivateRoute element={<QuizBim2/>} />} />
+          <Route path="/hasil-lat-bimbing" element={<PrivateRoute element={<ResultBim2 />} />} />
+
+          <Route path="/latihan-mandiri" element={<PrivateRoute element={<Mandiri2 />} />} />
+          <Route path="/quiz-latihan-mandiri" element={<PrivateRoute element={<QuizMan2/>} />} />
+          <Route path="/hasil-latihan-mandiri" element={<PrivateRoute element={<ResultMan2 />} />}/>
+
+          <Route path="/materii" element={<PrivateRoute element={<GabMateri />} />}/>
+          <Route path="/latihan-struktur" element={<PrivateRoute element={<GabStruktur />} />}/>
+          <Route path="/latihan-terbimbing" element={<PrivateRoute element={<GabBimbing />} />}/>
+          <Route path="/latihan-mandirii" element={<PrivateRoute element={<GabMandiri/>} />}/>
+          <Route path="/posttest" element={<PrivateRoute element={<GabPosttest/>} />}/>
+
+          <Route path="/post" element={<PrivateRoute element={<Posttest />} />} />
+          <Route path="/quiz-post" element={<PrivateRoute element={<QuizPost/>} />}/>
+          <Route path="/hasil-post" element={<PrivateRoute element={<ResultPost/>} />}/>
+
+          <Route path="/test" element={<PrivateRoute element={<Posttest2 />} />}/>
+          <Route path="/quiz-test" element={<PrivateRoute element={<QuizPost2/>} />}/>
+          <Route path="/hasil-test" element={<PrivateRoute element={<ResultPost2/>} />}/>
+
           <Route></Route>
         </Routes>
       </Router>
