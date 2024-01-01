@@ -32,7 +32,7 @@ export default function ResultMan() {
         achived : flag ? "Berhasil" : "Gagal" });
 
     async function onRestart(){
-      await axios.delete(`http://localhost:5000/api/resultman?name=${sessionStorage.getItem('name')}`)
+      await axios.delete(`https://servers-pa.vercel.app/api/resultman?name=${sessionStorage.getItem('name')}`)
       navigate("/latihan-mandirii")
       navigate(0);
     }

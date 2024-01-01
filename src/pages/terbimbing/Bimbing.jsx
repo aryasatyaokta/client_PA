@@ -40,7 +40,7 @@ export default function Bimbing() {
   const handleResultHistory = async () => {
     try {
       let temp_data = []
-      const response = await fetch('http://localhost:5000/api/resultbim');
+      const response = await fetch('https://servers-pa.vercel.app/api/resultbim');
       const data = await response.json();
       for(let i = 0; i < data.length; i++){
         if(data[i].username == sessionStorage.getItem('name')){
@@ -70,7 +70,7 @@ export default function Bimbing() {
   }, [results.name || results])
 
   async function onRestart(){
-    await axios.delete(`http://localhost:5000/api/resultbim?name=${sessionStorage.getItem('name')}`)
+    await axios.delete(`https://servers-pa.vercel.app/api/resultbim?name=${sessionStorage.getItem('name')}`)
     navigate("/latihan-terbimbing")
     navigate(0);
   }

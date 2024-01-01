@@ -31,7 +31,7 @@ export default function ResultBim() {
         achived : flag ? "Berhasil" : "Gagal" });
 
     async function onRestart(){
-      await axios.delete(`http://localhost:5000/api/resultbim?name=${sessionStorage.getItem('name')}`)
+      await axios.delete(`https://servers-pa.vercel.app/api/resultbim?name=${sessionStorage.getItem('name')}`)
       navigate("/latihan-terbimbing")
       navigate(0);
     }

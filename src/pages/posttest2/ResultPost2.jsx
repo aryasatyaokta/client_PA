@@ -32,7 +32,7 @@ export default function ResultPost2() {
         achived : flag ? "Berhasil" : "Gagal" });
 
     async function onRestart(){
-      await axios.delete(`http://localhost:5000/api/resultpost2?name=${sessionStorage.getItem('name')}`)
+      await axios.delete(`https://servers-pa.vercel.app/api/resultpost2?name=${sessionStorage.getItem('name')}`)
       navigate("/materii")
       navigate(0);
     }
