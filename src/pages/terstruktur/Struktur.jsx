@@ -181,8 +181,8 @@ export default function Struktur() {
                     </div>
                     <div className='flex justify-between px-2 mt-5'>
                       <span>Status Nilai: </span>
-                      <span className={results.nilai < 80 ? 'font-bold text-red-500' : 'font-bold text-[#82CD47]'}>
-                        {results.nilai > 80 ? "Berhasil" : "Gagal"}
+                      <span className={results.nilai > 80 ? 'font-bold text-[#82CD47]' : 'font-bold text-red-500'}>
+                          {results.nilai > 80 ? "Berhasil" : "Gagal"}
                       </span>
                     </div>
                   </div>
