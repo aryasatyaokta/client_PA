@@ -24,7 +24,7 @@ export default function ResultStruk() {
     const flag = flagResultStruk(totalPoints, earnPoints)
 
     const [isAudioPlaying, setIsAudioPlaying] = useState(false);
-    const [audioElement] = useState(new Audio(earnPoints >= 80 ? audioNilaiCukup : audioNilaiKurang));
+    const [audioElement] = useState(new Audio(earnPoints > 80 ? audioNilaiCukup : audioNilaiKurang));
 
     usePublishResultStruk({ 
         resultsStruk, 
@@ -86,8 +86,10 @@ export default function ResultStruk() {
                     <span className='font-bold'>{earnPoints || 0}</span>
                   </div>
                   <div className='flex justify-between px-2 py-2'>
-                    <span>Status Nilai: </span>
-                    <span style={{color : `${flag ? "#82CD47" : "#ff2a66"}`}} className='font-bold'>{flag ? "Berhasil" : "Gagal"}</span>
+                  <span>Status Nilai: </span>
+                  <span style={{color : `${earnPoints > 80 ? "#82CD47" : "#ff2a66"}`}} className='font-bold'>
+                    {earnPoints > 80 ? "Berhasil" : "Gagal"}
+                  </span>
                   </div>
                 </div>  
               </div>
