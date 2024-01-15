@@ -93,7 +93,7 @@ export default function ResultStruk() {
               </div>
 
               <div className='flex flex-col items-center justify-center'>
-                {earnPoints < 80 ? (
+                {earnPoints <= 80 ? (
                   <button onClick={onRestart} className='bg-[#9A3B3B] px-16 py-2 text-white rounded-lg'>Ulangi</button>
                 ) : (
                   <Link to='/lat-terstruktur' className='bg-[#9A3B3B] px-16 py-2 text-white rounded-lg'>Selanjutnya</Link>
@@ -102,7 +102,7 @@ export default function ResultStruk() {
             </div>
             <div>
               <div className="flex flex-col items-center justify-center border-yellow-700 border-2 rounded-xl drop-shadow-xl self-start">
-              {earnPoints >= 80 ? (
+              {earnPoints > 80 ? (
                   <>
                     <img className='w-52' alt='' src={Kagum} />
                     <p className="text-[#9A3B3B] mt-4 text-center">Asikk, nilai kamu sudah cukup, klik tombol selanjutnya yaa</p>

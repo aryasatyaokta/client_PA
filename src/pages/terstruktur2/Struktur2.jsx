@@ -181,19 +181,19 @@ export default function Struktur2() {
                     </div>
                     <div className='flex justify-between px-2 mt-5'>
                       <span>Status Nilai: </span>
-                      <span className={results.nilai < 80 ? 'font-bold text-red-500' : 'font-bold text-[#82CD47]'}>
+                      <span className={results.nilai <= 80 ? 'font-bold text-red-500' : 'font-bold text-[#82CD47]'}>
                         {results.kuis}
                       </span>
                     </div>
                   </div>
-                  <button onClick={onRestart} className={results.nilai < 80 ? 'bg-[#9A3B3B] px-16 py-2 text-white rounded-lg mt-3' : 'hidden'}>
+                  <button onClick={onRestart} className={results.nilai <= 80 ? 'bg-[#9A3B3B] px-16 py-2 text-white rounded-lg mt-3' : 'hidden'}>
                     Restart
                   </button>
                 </div>
               {/* ))} */}
               </div>
               <div className="flex items-center justify-center border-yellow-700 border-2 rounded-xl drop-shadow-xl self-start">
-              {results.nilai < 80 || results2.nilai < 80 || results3.nilai < 80 ? (
+              {results.nilai <= 80 || results2.nilai < 80 || results3.nilai < 80 ? (
                 <img className='w-52' src={Nangis} alt='Nangis'/>
               ) : (
                 <img className='w-52' src={Kagum} alt='Kagum'/>
@@ -234,7 +234,7 @@ export default function Struktur2() {
         </div>
         </div>
         }
-        {results.nilai >=80 ? (
+        {results.nilai >80 ? (
           <Struktur5/>
          ) : (
           <div className=" dark:bg-gray-800">
